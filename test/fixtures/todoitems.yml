@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  due_date: 2014-07-27
+  task_title: MyString
+  description: MyString
+  todolist_id: 
+
+two:
+  due_date: 2014-07-27
+  task_title: MyString
+  description: MyString
+  todolist_id: 

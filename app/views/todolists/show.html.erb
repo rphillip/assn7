@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+<h1>
+  <strong>
+  <%if @todolist.todoitems.empty? %>
+	   <span class="done">
+	   <%= @todolist.list_due_date%></span>
+	<%else%>
+	     <%@todolist.todoitems.each do |todoitem| %>
+	          <%if !todoitem.done %>
+		     <span class = "notdone">
+		     <% break %>
+		  <%else%>
+		      <span class = "done">
+		  <%end%>
+	    <%end%>
+	    <%= @todolist.list_due_date%></span>
+   <%end%>	
+</strong>
+
+
+  <strong>
+  <%= @todolist.list_name %></strong>
+  |<%= link_to 'New Todo Item', new_todolist_todoitem_path(@todolist) %>
+</h1>
+
+<div id="notes">
+  <%= render @todoitems %>
+    <%= will_paginate @todoitems %>
+</div>
+
+
+<%= link_to 'Edit Todo List', edit_todolist_path(@todolist) %> |
+<%= link_to "Delete Todo List", @todolist, 
+        data: { confirm: "List will be deleted?" }, 
+        method: :delete %> |
+<%= link_to 'Back to List of Todo Lists', todolists_path %>

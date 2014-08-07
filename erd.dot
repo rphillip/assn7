@@ -1,0 +1,82 @@
+digraph Asgn6 {
+rankdir = "LR";
+ranksep = "0.5";
+nodesep = "0.4";
+pad = "0.4,0.4";
+margin = "0,0";
+concentrate = "true";
+labelloc = "t";
+fontsize = "13";
+fontname = "Arial Bold";
+node[ shape  =  "Mrecord" , fontsize  =  "10" , fontname  =  "Arial" , margin  =  "0.07,0.05" , penwidth  =  "1.0"];
+edge[ fontname  =  "Arial" , fontsize  =  "7" , dir  =  "both" , arrowsize  =  "0.9" , penwidth  =  "1.0" , labelangle  =  "32" , labeldistance  =  "1.8"];
+label = "Asgn6 domain model\n\n";
+m_Account [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Account</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="age">age <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="first_name">first_name <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="gender">gender <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="last_name">last_name <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+m_HABTM_Tags [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">HABTM_Tags</font></td></tr>
+</table>
+>];
+m_HABTM_Todoitems [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">HABTM_Todoitems</font></td></tr>
+</table>
+>];
+m_Tag [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Tag</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="tag_name">tag_name <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+m_Todoitem [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Todoitem</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="description">description <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="due_date">due_date <font face="Arial Italic" color="grey60">date</font></td></tr>
+  <tr><td align="left" width="130" port="task_title">task_title <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+m_Todolist [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Todolist</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="list_due_date">list_due_date <font face="Arial Italic" color="grey60">date</font></td></tr>
+  <tr><td align="left" width="130" port="list_name">list_name <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+m_User [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">User</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="login">login <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="password">password <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+  m_User -> m_Account [arrowhead = "none", arrowtail = "none", weight = "2"];
+  m_Tag -> m_HABTM_Todoitems [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Tag -> m_Todoitem [style = "dotted", arrowhead = "normal", arrowtail = "none", weight = "1", constraint = "false"];
+  m_Tag -> m_HABTM_Todoitems [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Todoitem -> m_HABTM_Todoitems [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Todolist -> m_Todoitem [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_User -> m_Todoitem [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Todoitem -> m_HABTM_Tags [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Todoitem -> m_Tag [style = "dotted", arrowhead = "normal", arrowtail = "none", weight = "1", constraint = "false"];
+  m_Todoitem -> m_HABTM_Tags [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Tag -> m_HABTM_Tags [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_User -> m_Todolist [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_User -> m_Todoitem [style = "dotted", arrowhead = "normal", arrowtail = "none", weight = "1", constraint = "false"];
+}

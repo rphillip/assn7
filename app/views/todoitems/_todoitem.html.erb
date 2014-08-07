@@ -1,0 +1,17 @@
+<div class="todoitem">
+  <div>
+       <%if todoitem.done %>
+        <span class="check"><%= "#{todoitem.due_date}"%>
+        </span>
+	<%else%>
+	    <span class="nocheck"><%= "#{todoitem.due_date}" %>
+        </span>
+	<%end%>
+      <span class="todoitem_title"><%= link_to "#{todoitem.task_title}", todolist_todoitem_path(@todolist, todoitem) %>
+      </span>
+      
+  </div>
+  <div>
+    <br/>
+  </div>
+</div>

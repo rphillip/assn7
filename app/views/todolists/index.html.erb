@@ -1,0 +1,31 @@
+<h1>Todo lists</h1>
+
+
+   <div class = "todolist">
+   
+
+    <% @todolists.each do |todolist| %>
+	<%if todolist.todoitems.empty? %>
+	   <span class="done">
+	   <%= todolist.list_due_date%></span>
+	<%else%>
+	     <%todolist.todoitems.each do |todoitem| %>
+	          <%if !todoitem.done %>
+		     <span class = "notdone">
+		     <% break %>
+		  <%else%>
+		      <span class = "done">
+		  <%end%>
+	    <%end%>
+	    <%= todolist.list_due_date%></span>
+	<%end%>
+        <%= link_to "#{todolist.list_name}", todolist, class: "todolist_link" %><br>
+
+      
+    <% end %>
+   <%= will_paginate @todolists %>
+
+
+<br>
+
+<%= link_to 'New Todolist', new_todolist_path %>
